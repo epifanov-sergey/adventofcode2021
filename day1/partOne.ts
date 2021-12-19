@@ -1,4 +1,4 @@
-const utils = require('../utils');
+import * as utils from '../utils';
 
 ((path: string, data = utils.readFile(path)) => {
   let counter = 0;

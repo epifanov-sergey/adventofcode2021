@@ -1,4 +1,4 @@
-const utils = require('../utils');
+import * as utils from '../utils';
 
 ((path: string, data = utils.readFile(path)) => {
   const arrData: Record<string, string[]>[] = data.split(utils.LINE_BREAK).map((line: string) => {

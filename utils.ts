@@ -1,6 +1,6 @@
 const { readFileSync } = require('fs');
 
-const readFile = scriptPath => {
+export const readFile = (scriptPath: string) => {
   const scriptPathArray = scriptPath.split('/');
 
   scriptPathArray[scriptPathArray.length - 1] = 'input.txt';
@@ -10,9 +10,5 @@ const readFile = scriptPath => {
   return readFileSync(path, { encoding: 'utf8' }).trim();
 };
 
-const LINE_BREAK = '\n';
-const DOUBLE_LINE_BREAK = '\n\n';
-
-module.exports.readFile = readFile;
-module.exports.LINE_BREAK = LINE_BREAK;
-module.exports.DOUBLE_LINE_BREAK = DOUBLE_LINE_BREAK;
+export const LINE_BREAK = '\n';
+export const DOUBLE_LINE_BREAK = '\n\n';

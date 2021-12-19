@@ -1,27 +1,21 @@
-const utils = require('../utils');
-
-enum ACTIONS {
-  forward = 'forward',
-  up = 'up',
-  down = 'down',
-};
+import * as utils from '../utils';
+import { ACTIONS } from './types';
 
 ((path: string, data = utils.readFile(path)) => {
-  let depth = 0, horizontal = 0;
+  let depth = 0,
+    horizontal = 0;
   const arrData = data.split(utils.LINE_BREAK);
-  for(let i = 0; i < arrData.length; i++) {
+  for (let i = 0; i < arrData.length; i++) {
     const [action, value] = arrData[i].split(' ');
-    if(action === ACTIONS.forward) {
+    if (action === ACTIONS.forward) {
       horizontal += Number(value);
     }
-    if(action === ACTIONS.up) {
+    if (action === ACTIONS.up) {
       depth -= Number(value);
     }
-    if(action === ACTIONS.down) {
+    if (action === ACTIONS.down) {
       depth += Number(value);
     }
   }
-  console.log('depth', depth);
-  console.log('horizontal', horizontal);
-  console.log('multiply', horizontal*depth);
+  console.log('multiply', horizontal * depth);
 })(process.argv[1]);
