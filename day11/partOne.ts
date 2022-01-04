@@ -2,13 +2,13 @@ import * as utils from '../utils';
 
 type Octopus = { start: number; end: number };
 
-const increaseEnergyLevel = (matrix: Octopus[][], row: number, col: number) => {
+const increaseOctopusEnergyLevel = (matrix: Octopus[][], row: number, col: number) => {
   if (matrix[row][col].end === 9) {
     matrix[row][col].end = 0;
     for (let i = row - 1; i <= row + 1; i++) {
       for (let j = col - 1; j <= col + 1; j++) {
         if (i >= 0 && i <= 9 && j >= 0 && j <= 9 && !(i === row && j === col)) {
-          increaseEnergyLevel(matrix, i, j);
+          increaseOctopusEnergyLevel(matrix, i, j);
         }
       }
     }
@@ -31,7 +31,7 @@ const increaseEnergyLevel = (matrix: Octopus[][], row: number, col: number) => {
   for (let step = 1; step <= 100; step++) {
     for (let i = 0; i < octopuses.length; i++) {
       for (let j = 0; j < octopuses[i].length; j++) {
-        increaseEnergyLevel(octopuses, i, j);
+        increaseOctopusEnergyLevel(octopuses, i, j);
       }
     }
 
